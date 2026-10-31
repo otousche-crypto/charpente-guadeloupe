@@ -223,12 +223,41 @@
   .cta-box {
     position: relative; border-radius: 28px; overflow: hidden; color: #fff; padding: 80px 60px;
     background: linear-gradient(120deg, rgba(20,19,15,.92), rgba(20,19,15,.55)), url("images/charpente-detail.jpg") center/cover;
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
   }
   .cta-box h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
   .cta-box p { color: rgba(255,255,255,.8); }
-  .cta-phones { display: grid; gap: 14px; }
+  .cta-phones { display: grid; gap: 14px; margin-top: 32px; max-width: 360px; }
   .cta-phones .phone-btn { backdrop-filter: blur(6px); }
+
+  .contact-form {
+    background: var(--bg); color: var(--ink); border-radius: 20px; padding: 34px;
+    display: grid; gap: 16px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
+  }
+  .contact-form h3 { font-size: 1.5rem; margin-bottom: 4px; }
+  .contact-form label { display: grid; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); width: 100%;
+    padding: 13px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .contact-form select { appearance: none; cursor: pointer;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b5248' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 12px center / 18px no-repeat;
+    padding-right: 40px;
+  }
+  .contact-form select:invalid { color: #9a8f82; }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+    outline: none; border-color: var(--wood); box-shadow: 0 0 0 4px rgba(184,105,46,.15);
+  }
+  .contact-form .invalid { border-color: var(--red); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .contact-form .btn { justify-content: center; border: 0; cursor: pointer; margin-top: 4px; }
+  .contact-form .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+  .form-status { font-size: 0.92rem; min-height: 1.2em; }
+  .form-status.ok { color: var(--green); font-weight: 600; }
+  .form-status.err { color: var(--red); }
+  .hp { display: none; }
 
   /* Footer */
   footer { background: var(--night); color: rgba(255,255,255,.65); padding: 50px 0 40px; font-size: 0.9rem; }
@@ -262,7 +291,7 @@
     .team-grid { grid-template-columns: 1fr; }
     .values { grid-template-columns: 1fr; }
     .value + .value { border-left: 0; border-top: 1px solid var(--line); }
-    .cta-box { grid-template-columns: 1fr; padding: 50px 30px; }
+    .cta-box { grid-template-columns: 1fr; padding: 50px 30px; gap: 40px; }
   }
   @media (max-width: 600px) {
     .wrap { padding: 0 16px; }
@@ -280,6 +309,10 @@
     .gallery { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 260px; }
     .shot:nth-child(n) { grid-column: auto; grid-row: auto; }
     .artisan { padding: 30px 22px; }
+    .cta-box { padding: 40px 16px 16px; border-radius: 22px; }
+    .cta-box > div:first-child { padding: 0 6px; }
+    .contact-form { padding: 24px 18px; }
+    .field-row { grid-template-columns: 1fr; }
     .phone-btn strong { font-size: 1.3rem; }
     .float-call {
       display: flex; position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 40;
@@ -515,18 +548,50 @@
         <div>
           <span class="eyebrow" style="color:#f0b27a">Devis gratuit</span>
           <h2 style="margin-top:14px">Un projet de toiture ou de charpente ?</h2>
-          <p>Appelez-nous directement : on vous rappelle rapidement pour organiser une visite et établir votre devis, sans engagement.</p>
+          <p>Appelez-nous directement ou laissez-nous un message : on vous recontacte rapidement pour organiser une visite et établir votre devis, sans engagement.</p>
+          <div class="cta-phones">
+            <a class="phone-btn" href="tel:+590690364304" style="--c:var(--red);background:var(--red)">
+              <span class="ic"><svg><use href="#i-phone"/></svg></span>
+              <span><small>Frédéric</small><strong>0690 36 43 04</strong></span>
+            </a>
+            <a class="phone-btn" href="tel:+590691274764" style="background:var(--green)">
+              <span class="ic"><svg><use href="#i-phone"/></svg></span>
+              <span><small>William</small><strong>0691 27 47 64</strong></span>
+            </a>
+          </div>
         </div>
-        <div class="cta-phones">
-          <a class="phone-btn" href="tel:+590690364304" style="--c:var(--red);background:var(--red)">
-            <span class="ic"><svg><use href="#i-phone"/></svg></span>
-            <span><small>Frédéric</small><strong>0690 36 43 04</strong></span>
-          </a>
-          <a class="phone-btn" href="tel:+590691274764" style="background:var(--green)">
-            <span class="ic"><svg><use href="#i-phone"/></svg></span>
-            <span><small>William</small><strong>0691 27 47 64</strong></span>
-          </a>
-        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <h3>Demande de devis</h3>
+          <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+          <input type="hidden" name="subject" value="Nouvelle demande depuis le site">
+          <input type="hidden" name="from_name" value="Site Frédéric &amp; William">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+          <div class="field-row">
+            <label>Email
+              <input type="email" name="email" required autocomplete="email" placeholder="vous@exemple.com">
+            </label>
+            <label>Téléphone
+              <input type="tel" name="telephone" required autocomplete="tel" placeholder="0690 00 00 00">
+            </label>
+          </div>
+          <label>Votre besoin
+            <select name="raison" required>
+              <option value="" disabled selected>Choisir une expertise</option>
+              <option>Couverture</option>
+              <option>Charpente</option>
+              <option>Étanchéité</option>
+              <option>Nettoyage</option>
+              <option>Peinture</option>
+              <option>Projets bois</option>
+              <option>Autre</option>
+            </select>
+          </label>
+          <label>Message
+            <textarea name="message" rows="4" required placeholder="Décrivez votre projet en quelques mots (commune, type de toiture…)"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -584,6 +649,43 @@
   };
   track.addEventListener('scroll', setActive, { passive: true });
   setActive();
+
+  const form = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fields = [...form.querySelectorAll('[required]')];
+    fields.forEach(f => f.classList.toggle('invalid', !f.checkValidity()));
+    const firstBad = fields.find(f => !f.checkValidity());
+    if (firstBad) {
+      formStatus.className = 'form-status err';
+      formStatus.textContent = 'Merci de remplir tous les champs (email et téléphone valides).';
+      firstBad.focus();
+      return;
+    }
+    const btn = form.querySelector('button');
+    btn.disabled = true;
+    formStatus.className = 'form-status';
+    formStatus.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      form.reset();
+      formStatus.className = 'form-status ok';
+      formStatus.textContent = 'Merci ! Votre demande est bien envoyée, on vous recontacte rapidement.';
+    } catch {
+      formStatus.className = 'form-status err';
+      formStatus.textContent = "L'envoi n'a pas fonctionné. Appelez-nous directement au 0690 36 43 04 ou au 0691 27 47 64.";
+    } finally {
+      btn.disabled = false;
+    }
+  });
+  form.addEventListener('input', e => e.target.classList.remove('invalid'));
 
   const lb = document.getElementById('lightbox');
   document.querySelectorAll('.shot img').forEach(img => img.addEventListener('click', () => {
