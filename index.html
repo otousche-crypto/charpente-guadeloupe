@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frédéric & William — Charpente Couverture Guadeloupe</title>
+<meta name="description" content="Frédéric et William, artisans charpentiers couvreurs en Guadeloupe : couverture, charpente, étanchéité, nettoyage et peinture de toiture, projets bois. Devis gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f2ea;
+    --bg-alt: #efe6d8;
+    --ink: #1d1a16;
+    --ink-soft: #5b5248;
+    --line: #ddd1bf;
+    --wood: #b8692e;
+    --wood-dark: #8e4f20;
+    --red: #d2462a;
+    --green: #1d8a6c;
+    --night: #14130f;
+    --radius: 18px;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", sans-serif; line-height: 1.05; letter-spacing: -0.02em; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--wood); display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+  section { padding: 110px 0; }
+  .section-head { max-width: 680px; margin-bottom: 56px; }
+  .section-head h2 { font-size: clamp(2.1rem, 4.5vw, 3.3rem); margin: 14px 0 16px; }
+  .section-head p { color: var(--ink-soft); font-size: 1.08rem; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 0.98rem;
+    transition: transform .2s, background .2s, box-shadow .2s;
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary { background: var(--wood); color: #fff; box-shadow: 0 10px 30px -10px rgba(184,105,46,.7); }
+  .btn-primary:hover { background: var(--wood-dark); transform: translateY(-2px); }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,.5); color: #fff; backdrop-filter: blur(6px); }
+  .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+  /* Nav */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    transition: background .3s, box-shadow .3s, padding .3s;
+    padding: 22px 0;
+  }
+  .nav.scrolled { background: rgba(247,242,234,.92); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); padding: 14px 0; }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .logo { display: flex; align-items: center; gap: 12px; color: #fff; transition: color .3s; }
+  .nav.scrolled .logo { color: var(--ink); }
+  .logo-mark {
+    width: 42px; height: 42px; border-radius: 12px; background: var(--wood);
+    display: grid; place-items: center; color: #fff; flex-shrink: 0;
+  }
+  .logo-mark svg { width: 24px; height: 24px; }
+  .logo strong { font-family: "Bricolage Grotesque"; font-size: 1.15rem; display: block; line-height: 1.1; }
+  .logo span { font-size: 0.75rem; opacity: .75; letter-spacing: .04em; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,.85); font-weight: 500; font-size: 0.95rem; transition: color .2s; }
+  .nav.scrolled .nav-links a { color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--wood) !important; }
+  .nav-cta { padding: 11px 20px; font-size: 0.9rem; }
+  .burger { display: none; background: none; border: 0; color: #fff; cursor: pointer; }
+  .nav.scrolled .burger { color: var(--ink); }
+  .burger svg { width: 28px; height: 28px; }
+
+  /* Hero */
+  .hero {
+    position: relative; min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: flex-end; color: #fff; padding: 140px 0 80px; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url("images/charpente-hero.jpg") center 35% / cover no-repeat;
+    transform: scale(1.06); animation: zoom 18s ease-out forwards;
+  }
+  @keyframes zoom { to { transform: scale(1); } }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20,19,15,.55) 0%, rgba(20,19,15,.15) 35%, rgba(20,19,15,.82) 100%),
+      linear-gradient(90deg, rgba(20,19,15,.6) 0%, transparent 65%);
+  }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(8px);
+    font-size: 0.85rem; font-weight: 500; margin-bottom: 26px;
+  }
+  .hero-tag i { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 4px rgba(74,222,128,.25); }
+  .hero h1 { font-size: clamp(2.8rem, 7.5vw, 6rem); font-weight: 800; max-width: 900px; }
+  .hero h1 em { font-style: normal; color: #f0b27a; }
+  .hero-sub { font-size: clamp(1.05rem, 1.6vw, 1.25rem); max-width: 560px; margin: 24px 0 36px; color: rgba(255,255,255,.85); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 56px;
+    margin-top: 64px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.2);
+  }
+  .hero-stats strong { font-family: "Bricolage Grotesque"; font-size: 2.2rem; display: block; line-height: 1; }
+  .hero-stats span { font-size: 0.88rem; color: rgba(255,255,255,.7); }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .service {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 34px 30px;
+    transition: transform .3s, box-shadow .3s, border-color .3s; position: relative; overflow: hidden;
+  }
+  .service:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(60,40,20,.35); border-color: transparent; }
+  .service-icon {
+    width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 24px;
+    background: var(--c, var(--wood)); color: #fff;
+  }
+  .service-icon svg { width: 28px; height: 28px; }
+  .service h3 { font-size: 1.45rem; margin-bottom: 10px; }
+  .service p { color: var(--ink-soft); font-size: 0.97rem; }
+  .service ul { list-style: none; margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .service li { font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: var(--bg); color: var(--ink-soft); }
+  .service .num { position: absolute; top: 24px; right: 28px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 1rem; color: var(--line); }
+
+  /* Split / savoir-faire */
+  .split { background: var(--night); color: #fff; }
+  .split .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; }
+  .split-media { position: relative; }
+  .split-media img { border-radius: var(--radius); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+  .split-badge {
+    position: absolute; right: -28px; bottom: 40px; background: var(--wood); color: #fff;
+    padding: 22px 26px; border-radius: 16px; max-width: 220px; box-shadow: 0 20px 40px -15px rgba(0,0,0,.5);
+  }
+  .split-badge strong { font-family: "Bricolage Grotesque"; font-size: 1.25rem; display: block; line-height: 1.2; }
+  .split-badge span { font-size: 0.85rem; opacity: .85; }
+  .split .section-head { margin-bottom: 36px; }
+  .split .section-head p { color: rgba(255,255,255,.7); }
+  .split .eyebrow { color: #f0b27a; }
+  .checks { list-style: none; display: grid; gap: 20px; }
+  .checks li { display: flex; gap: 16px; }
+  .checks .tick { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: rgba(240,178,122,.15); color: #f0b27a; display: grid; place-items: center; }
+  .checks .tick svg { width: 16px; height: 16px; }
+  .checks strong { display: block; font-size: 1.05rem; margin-bottom: 2px; }
+  .checks span { color: rgba(255,255,255,.65); font-size: 0.95rem; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 18px; }
+  .shot { position: relative; border-radius: var(--radius); overflow: hidden; cursor: zoom-in; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .shot:hover img { transform: scale(1.05); }
+  .shot:nth-child(1) { grid-row: span 2; }
+  .shot:nth-child(4) { grid-column: span 2; }
+  .shot figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 50px 22px 20px; color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,.75));
+  }
+  .shot figcaption small { font-size: 0.72rem; letter-spacing: .14em; text-transform: uppercase; color: #f0b27a; font-weight: 600; }
+  .shot figcaption b { display: block; font-family: "Bricolage Grotesque"; font-size: 1.2rem; font-weight: 700; }
+
+  /* Lightbox */
+  .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(10,9,7,.94); display: none; place-items: center; padding: 24px; cursor: zoom-out; }
+  .lightbox.open { display: grid; }
+  .lightbox img { max-height: 90vh; border-radius: 12px; }
+
+  /* Team */
+  .team { background: var(--bg-alt); }
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .artisan {
+    background: #fff; border-radius: var(--radius); padding: 40px; position: relative; overflow: hidden;
+    border-top: 6px solid var(--c);
+  }
+  .artisan-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 50%; background: var(--c); color: #fff;
+    display: grid; place-items: center; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 1.6rem;
+  }
+  .artisan h3 { font-size: 1.9rem; }
+  .artisan .role { color: var(--ink-soft); font-size: 0.92rem; }
+  .artisan p { color: var(--ink-soft); margin-bottom: 26px; }
+  .phone-btn {
+    display: flex; align-items: center; gap: 16px; background: var(--c); color: #fff;
+    padding: 16px 22px; border-radius: 14px; transition: transform .2s, filter .2s;
+  }
+  .phone-btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .phone-btn .ic { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; flex-shrink: 0; }
+  .phone-btn .ic svg { width: 20px; height: 20px; }
+  .phone-btn small { display: block; font-size: 0.78rem; opacity: .85; }
+  .phone-btn strong { font-family: "Bricolage Grotesque"; font-size: 1.55rem; letter-spacing: .02em; }
+  .wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); }
+  .wa:hover { color: var(--green); }
+  .wa svg { width: 18px; height: 18px; }
+
+  /* Values */
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+  .value { padding: 40px 34px; }
+  .value + .value { border-left: 1px solid var(--line); }
+  .value svg { width: 34px; height: 34px; color: var(--wood); margin-bottom: 18px; }
+  .value h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .value p { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* Zone */
+  .zone-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .zone-list span { padding: 9px 18px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.92rem; background: #fff; }
+
+  /* CTA */
+  .cta { padding: 0 0 110px; }
+  .cta-box {
+    position: relative; border-radius: 28px; overflow: hidden; color: #fff; padding: 80px 60px;
+    background: linear-gradient(120deg, rgba(20,19,15,.92), rgba(20,19,15,.55)), url("images/charpente-detail.jpg") center/cover;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center;
+  }
+  .cta-box h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
+  .cta-box p { color: rgba(255,255,255,.8); }
+  .cta-phones { display: grid; gap: 14px; }
+  .cta-phones .phone-btn { backdrop-filter: blur(6px); }
+
+  /* Footer */
+  footer { background: var(--night); color: rgba(255,255,255,.65); padding: 50px 0 40px; font-size: 0.9rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer .logo { color: #fff; }
+
+  /* Floating call (mobile) */
+  .float-call { display: none; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    section { padding: 80px 0; }
+    .nav-links, .nav-cta { display: none; }
+    .burger { display: block; }
+    .nav.open { background: var(--bg); }
+    .nav.open .logo, .nav.open .burger { color: var(--ink); }
+    .nav.open .nav-links {
+      display: flex; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg); padding: 10px 24px 24px; border-bottom: 1px solid var(--line);
+    }
+    .nav.open .nav-links a { color: var(--ink); display: block; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .split .wrap { grid-template-columns: 1fr; gap: 50px; }
+    .split-badge { right: 16px; }
+    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 220px 220px; }
+    .shot:nth-child(1) { grid-column: span 2; grid-row: auto; }
+    .shot:nth-child(4) { grid-column: span 2; }
+    .team-grid { grid-template-columns: 1fr; }
+    .values { grid-template-columns: 1fr; }
+    .value + .value { border-left: 0; border-top: 1px solid var(--line); }
+    .cta-box { grid-template-columns: 1fr; padding: 50px 30px; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hero { padding-bottom: 100px; }
+    .hero-stats { gap: 26px; grid-template-columns: repeat(3, 1fr); }
+    .hero-stats strong { font-size: 1.6rem; }
+    .hero-stats span { font-size: 0.78rem; }
+    .gallery { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 260px; }
+    .shot:nth-child(n) { grid-column: auto; grid-row: auto; }
+    .artisan { padding: 30px 22px; }
+    .phone-btn strong { font-size: 1.3rem; }
+    .float-call {
+      display: flex; position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 40;
+      justify-content: center; align-items: center; gap: 10px; padding: 16px; border-radius: 999px;
+      background: var(--wood); color: #fff; font-weight: 600; box-shadow: 0 12px 30px -8px rgba(0,0,0,.4);
+    }
+    .float-call svg { width: 20px; height: 20px; }
+    footer { padding-bottom: 100px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; transform: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.7-.4z"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <span class="logo-mark"><svg><use href="#i-house"/></svg></span>
+      <span><strong>Frédéric &amp; William</strong><span>Charpente · Couverture · Guadeloupe</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#expertises">Expertises</a></li>
+      <li><a href="#savoir-faire">Savoir-faire</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#artisans">Les artisans</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary nav-cta">Devis gratuit</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="Charpente traditionnelle en bois massif réalisée par nos artisans"></div>
+    <div class="wrap">
+      <h1>Des charpentes et des toitures <em>faites pour durer.</em></h1>
+      <p class="hero-sub">Deux artisans charpentiers couvreurs, une même exigence. Conseil, qualité et réactivité pour protéger votre maison face au climat tropical.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary"><svg><use href="#i-phone"/></svg> Demander un devis gratuit</a>
+        <a href="#realisations" class="btn btn-ghost">Voir nos réalisations</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>2</strong><span>artisans locaux</span></div>
+        <div><strong>6</strong><span>expertises métier</span></div>
+        <div><strong>100%</strong><span>Guadeloupe</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISES -->
+  <section id="expertises">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nos expertises</span>
+        <h2>Du faîtage aux fondations du toit, on s'occupe de tout.</h2>
+        <p>Construction neuve, rénovation ou simple entretien : nous intervenons sur l'ensemble de votre toiture et de vos ouvrages bois.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service reveal" style="--c:#d2462a">
+          <span class="num">01</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14 12 5l10 9"/><path d="M5 17l3-3M9 17l3-3M13 17l3-3M17 17l3-3"/></svg></div>
+          <h3>Couverture</h3>
+          <p>Pose, rénovation et réparation de toitures en tôle, bac acier et tuiles, adaptées aux contraintes cycloniques.</p>
+          <ul><li>Pose neuve</li><li>Rénovation</li><li>Réparation</li></ul>
+        </article>
+        <article class="service reveal" style="--c:#b8692e">
+          <span class="num">02</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20L12 5z"/><path d="M12 5v14M7 19l5-7 5 7"/></svg></div>
+          <h3>Charpente</h3>
+          <p>Création, rénovation et renforcement de charpentes bois traditionnelles, solides et durables.</p>
+          <ul><li>Création</li><li>Renforcement</li><li>Traitement</li></ul>
+        </article>
+        <article class="service reveal" style="--c:#1f5fa8">
+          <span class="num">03</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/></svg></div>
+          <h3>Étanchéité</h3>
+          <p>Recherche et traitement des fuites, reprises d'étanchéité et pose de solins pour un toit parfaitement sec.</p>
+          <ul><li>Recherche de fuites</li><li>Reprises</li></ul>
+        </article>
+        <article class="service reveal" style="--c:#1d8a6c">
+          <span class="num">04</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h6l2-3h4"/><path d="M5 15v4h3l1-4"/><path d="M15 12l2-1M17 9l3-1M17 13l3 1M17 11h4"/></svg></div>
+          <h3>Nettoyage</h3>
+          <p>Démoussage et nettoyage haute pression des toitures, gouttières et bandeaux pour prolonger leur durée de vie.</p>
+          <ul><li>Toitures</li><li>Gouttières</li><li>Bandeaux</li></ul>
+        </article>
+        <article class="service reveal" style="--c:#3e8f86">
+          <span class="num">05</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h2v5h-8v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></div>
+          <h3>Peinture</h3>
+          <p>Peinture de toiture anti-corrosion et anti-chaleur : protection, rénovation et une maison qui retrouve son éclat.</p>
+          <ul><li>Protection</li><li>Rénovation</li></ul>
+        </article>
+        <article class="service reveal" style="--c:#7a4a2a">
+          <span class="num">06</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v4H3zM3 12h18v4H3z"/><path d="M6 16v4M18 16v4"/></svg></div>
+          <h3>Projets bois</h3>
+          <p>Terrasses, carbets, abris et aménagements extérieurs sur mesure, en bois sélectionné et traité.</p>
+          <ul><li>Terrasses</li><li>Carbets &amp; abris</li><li>Aménagements</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVOIR-FAIRE -->
+  <section class="split" id="savoir-faire">
+    <div class="wrap">
+      <div class="split-media reveal">
+        <img src="images/charpente-detail.jpg" alt="Assemblage de charpente traditionnelle en bois massif" loading="lazy">
+        <div class="split-badge"><strong>Assemblages traditionnels</strong><span>Bois massif, travail soigné à la main</span></div>
+      </div>
+      <div class="reveal">
+        <div class="section-head">
+          <span class="eyebrow">Notre savoir-faire</span>
+          <h2>Le travail du bois, dans les règles de l'art.</h2>
+          <p>Chaque chantier est suivi de A à Z par l'artisan lui-même. Pas de sous-traitance : vous savez qui travaille chez vous.</p>
+        </div>
+        <ul class="checks">
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><div><strong>Conseil personnalisé</strong><span>Visite sur place, diagnostic honnête et solution adaptée à votre budget.</span></div></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><div><strong>Matériaux adaptés au climat</strong><span>Bois traités, fixations renforcées : pensé pour les pluies tropicales et les vents forts.</span></div></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><div><strong>Sécurité sur chantier</strong><span>Travail en hauteur avec équipements de protection et harnais.</span></div></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><div><strong>Chantier propre</strong><span>On laisse les lieux comme on les a trouvés, en mieux.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REALISATIONS -->
+  <section id="realisations">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Réalisations</span>
+        <h2>Quelques chantiers récents.</h2>
+        <p>Charpente neuve, rénovation de toiture, nettoyage et peinture : un aperçu de notre travail.</p>
+      </div>
+      <div class="gallery reveal">
+        <figure class="shot"><img src="images/charpente-hero.jpg" alt="Charpente bois massif pour un préau" loading="lazy"><figcaption><small>Charpente</small><b>Préau en bois massif</b></figcaption></figure>
+        <figure class="shot"><img src="images/peinture-toiture.jpg" alt="Peinture d'une toiture en tôle bleue" loading="lazy"><figcaption><small>Peinture</small><b>Toiture tôle remise à neuf</b></figcaption></figure>
+        <figure class="shot"><img src="images/charpente-detail.jpg" alt="Détail d'assemblage de charpente" loading="lazy"><figcaption><small>Charpente</small><b>Assemblages &amp; volige</b></figcaption></figure>
+        <figure class="shot"><img src="images/nettoyage-toiture.jpg" alt="Nettoyage haute pression d'une toiture" loading="lazy" style="object-position:center 30%"><figcaption><small>Nettoyage</small><b>Démoussage haute pression</b></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISANS -->
+  <section class="team" id="artisans">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Les artisans</span>
+        <h2>Deux artisans, une même exigence.</h2>
+        <p>Contactez directement l'artisan de votre choix. Réponse rapide, devis gratuit et sans engagement.</p>
+      </div>
+      <div class="team-grid">
+        <article class="artisan reveal" style="--c:var(--red)">
+          <div class="artisan-head">
+            <div class="avatar">F</div>
+            <div><h3>Frédéric</h3><div class="role">Artisan charpentier couvreur</div></div>
+          </div>
+          <p>Charpente, couverture et projets bois : un travail précis et soigné, du premier conseil jusqu'à la dernière tôle posée.</p>
+          <a class="phone-btn" href="tel:+590690364304">
+            <span class="ic"><svg><use href="#i-phone"/></svg></span>
+            <span><small>Appeler Frédéric</small><strong>0690 36 43 04</strong></span>
+          </a>
+          <a class="wa" href="https://wa.me/590690364304" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Écrire sur WhatsApp</a>
+        </article>
+        <article class="artisan reveal" style="--c:var(--green)">
+          <div class="artisan-head">
+            <div class="avatar">W</div>
+            <div><h3>William</h3><div class="role">Artisan charpentier couvreur</div></div>
+          </div>
+          <p>Couverture, étanchéité, nettoyage et peinture de toiture : réactif et à l'écoute, pour un toit sain et protégé toute l'année.</p>
+          <a class="phone-btn" href="tel:+590691274764">
+            <span class="ic"><svg><use href="#i-phone"/></svg></span>
+            <span><small>Appeler William</small><strong>0691 27 47 64</strong></span>
+          </a>
+          <a class="wa" href="https://wa.me/590691274764" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Écrire sur WhatsApp</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALEURS + ZONE -->
+  <section>
+    <div class="wrap">
+      <div class="values reveal">
+        <div class="value">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <h3>Proximité</h3>
+          <p>Deux artisans locaux à votre écoute, qui connaissent le bâti et le climat guadeloupéens.</p>
+        </div>
+        <div class="value">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></svg>
+          <h3>Réactivité</h3>
+          <p>Des interventions rapides et efficaces, notamment en cas de fuite ou après un épisode pluvieux.</p>
+        </div>
+        <div class="value">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Expérience</h3>
+          <p>Plusieurs années de métier : un savoir-faire qui fait la différence sur chaque chantier.</p>
+        </div>
+      </div>
+
+      <div class="section-head reveal" style="margin-top:100px;margin-bottom:0">
+        <span class="eyebrow">Zone d'intervention</span>
+        <h2>Partout en Guadeloupe.</h2>
+        <p>Grande-Terre comme Basse-Terre, nous nous déplaçons chez vous pour un diagnostic et un devis gratuits.</p>
+        <div class="zone-list">
+          <span>Pointe-à-Pitre</span><span>Les Abymes</span><span>Baie-Mahault</span><span>Le Gosier</span><span>Sainte-Anne</span><span>Saint-François</span><span>Le Moule</span><span>Petit-Bourg</span><span>Lamentin</span><span>Sainte-Rose</span><span>Basse-Terre</span><span>Capesterre-Belle-Eau</span><span>Bouillante</span><span>Deshaies</span><span>Morne-à-l'Eau</span><span>Et alentours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <div>
+          <span class="eyebrow" style="color:#f0b27a">Devis gratuit</span>
+          <h2 style="margin-top:14px">Un projet de toiture ou de charpente ?</h2>
+          <p>Appelez-nous directement : on vous rappelle rapidement pour organiser une visite et établir votre devis, sans engagement.</p>
+        </div>
+        <div class="cta-phones">
+          <a class="phone-btn" href="tel:+590690364304" style="--c:var(--red);background:var(--red)">
+            <span class="ic"><svg><use href="#i-phone"/></svg></span>
+            <span><small>Frédéric</small><strong>0690 36 43 04</strong></span>
+          </a>
+          <a class="phone-btn" href="tel:+590691274764" style="background:var(--green)">
+            <span class="ic"><svg><use href="#i-phone"/></svg></span>
+            <span><small>William</small><strong>0691 27 47 64</strong></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <span class="logo-mark"><svg><use href="#i-house"/></svg></span>
+      <span><strong>Frédéric &amp; William</strong><span>Artisans charpentiers couvreurs</span></span>
+    </a>
+    <div>Conseil · Qualité · Réactivité — Guadeloupe (971)</div>
+    <div>© <span id="year"></span> Frédéric &amp; William</div>
+  </div>
+</footer>
+
+<a href="#contact" class="float-call"><svg><use href="#i-phone"/></svg> Appeler pour un devis</a>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const lb = document.getElementById('lightbox');
+  document.querySelectorAll('.shot img').forEach(img => img.addEventListener('click', () => {
+    lb.querySelector('img').src = img.src;
+    lb.querySelector('img').alt = img.alt;
+    lb.classList.add('open');
+  }));
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
